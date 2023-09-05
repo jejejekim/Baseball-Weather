@@ -1,13 +1,8 @@
-import React from "react";
-import Hello from "./Hello";
+import React, { useState } from "react";
+import "./App.scss";
 
 function App() {
-    return (
-        <>
-            <Hello name="react" color="green" />
-            <Hello />
-        </>
-    );
+    return <div>Hello</div>;
 }
 
 export default App;
