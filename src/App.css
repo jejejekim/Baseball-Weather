@@ -1,17 +1,15 @@
+@charset "UTF-8";
 @font-face {
     font-family: "Jockey One";
     src: url();
 }
-
-//프리텐다드 medium 추가
 @font-face {
     font-family: "Pretendard-Regular";
-    src: url("C:\Users\김지은\Desktop\baseball-weather\src\assets") format("woff2");
-    src: url("C:\Users\김지은\Desktop\baseball-weather\src\assets") format("woff");
+    src: url("C:Users김지은Þsktopºseball-weathersrc\assets") format("woff2");
+    src: url("C:Users김지은Þsktopºseball-weathersrc\assets") format("woff");
     font-weight: 400;
     font-style: normal;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -22,8 +20,7 @@
 }
 
 html {
-    //여기에서 rem 배수를 결정
     font-size: 16px;
     font-family: "Pretendard-Regular";
     font-weight: 400;
-}
+} /*# sourceMappingURL=App.css.map */
