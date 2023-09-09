@@ -26,6 +26,10 @@ const WeaContentBlock = styled.div`
         margin-bottom: 1rem;
     }
 
+    .summary {
+        font-weight: 300;
+    }
+
     .weeklyWeather {
         width: 28.75rem;
         display: flex;
