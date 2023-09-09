@@ -5,7 +5,7 @@ import "../App.scss";
 const WeaHeadBlock = styled.div`
     position: fixed;
     top: 2.25rem;
-    width: 18.438rem;
+    width: 16.438rem;
     height: 3.25rem;
     display: flex;
     align-items: center;
