@@ -1,24 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Ground } from "../assets/SVG/Ground.svg";
+import { ReactComponent as Field } from "../assets/SVG/Field.svg";
 
 const BackGroundBlock = styled.div`
-    .g {
-        width: 100%;
-        height: 100%;
-        bottom: 0;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    .field {
+        position: absolute;
+        width: 29.25rem;
+        height: 29.625rem;
         right: 0;
+        bottom: 0;
     }
 `;
-
-// const Ground = styled.div`
-//     width: 100%;
-// `;
 
 function BackGround() {
     return (
         <BackGroundBlock>
-            <Ground className="g" />
+            <Field className="field" />
         </BackGroundBlock>
     );
 }

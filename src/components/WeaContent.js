@@ -38,6 +38,13 @@ const WeaContentBlock = styled.div`
         align-items: center;
         font-size: 1.125rem;
     }
+
+    // > div:first-child {
+    //     width: 5rem;
+    //     height: 9.25rem;
+    //     background: rgba(255, 255, 255);
+    //     font-size: 1.25rem;
+    // }
 `;
 
 function WeaContent() {
@@ -46,12 +53,12 @@ function WeaContent() {
             <h1 className="tempreture">24˚</h1>
             <h2 className="summary">야구 보러가기 딱 좋은 날씨에요!</h2>
             <div className="weeklyWeather">
-                <WeaItem />
-                <WeaItem />
-                <WeaItem />
-                <WeaItem />
-                <WeaItem />
-                <WeaItem />
+                <WeaItem day={"수"} temp={30} />
+                <WeaItem day={"목"} temp={28} />
+                <WeaItem day={"금"} temp={27} />
+                <WeaItem day={"토"} temp={27} />
+                <WeaItem day={"일"} temp={28} />
+                <WeaItem day={"화"} temp={25} />
             </div>
         </WeaContentBlock>
     );

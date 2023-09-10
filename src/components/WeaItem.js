@@ -1,38 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import SunnyIcon from "./WeaIcon";
-import { WiDaySunny } from "react-icons/wi";
 
 const WeaItemBlock = styled.div`
-    background-color: #fff;
-    color: #000;
     width: 4rem;
     height: 8rem;
     border-radius: 999rem;
-
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
 
-    > div:first-child {
-        width: 5rem;
-        height: 9.25rem;
-        font-size: 1.25rem;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.25);
+    color: #000;
+
+    .dailyWea {
+        width: 4rem;
+        height: 6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
     }
+
+    //왜 되는 거지??????
     .icon {
         width: 2rem;
         height: 2rem;
     }
 `;
 
-function WeaItem() {
+function WeaItem({ day, temp }) {
     return (
         <WeaItemBlock>
-            <p>수</p>
-            <SunnyIcon />
-            {/* <WiDaySunny className="icons" /> */}
-            <p>30˚</p>
+            <div className="dailyWea">
+                <p>{day}</p>
+                <SunnyIcon />
+                <p>{temp}˚</p>
+            </div>
         </WeaItemBlock>
     );
 }
