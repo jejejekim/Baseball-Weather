@@ -14,8 +14,8 @@ const GlobalStyle = createGlobalStyle`
 function App() {
     return (
         <>
-            <BackGround />
             <GlobalStyle />
+            <BackGround />
             <WeaHead />
             <WeaContent />
         </>
