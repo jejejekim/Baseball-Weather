@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Ground } from "../assets/Ground.svg";
+import { ReactComponent as Ground } from "../assets/SVG/Ground.svg";
 
 const BackGroundBlock = styled.div`
     .g {
         width: 100%;
         height: 100%;
-        right: 0;
         bottom: 0;
+        right: 0;
     }
 `;
 
