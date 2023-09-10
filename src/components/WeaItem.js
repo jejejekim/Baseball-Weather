@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SunnyIcon from "./WeaIcon";
 import { WiDaySunny } from "react-icons/wi";
 
 const WeaItemBlock = styled.div`
@@ -19,9 +20,9 @@ const WeaItemBlock = styled.div`
         height: 9.25rem;
         font-size: 1.25rem;
     }
-    .icons {
-        width: 2.5rem;
-        height: 2.5rem;
+    .icon {
+        width: 2rem;
+        height: 2rem;
     }
 `;
 
@@ -29,7 +30,8 @@ function WeaItem() {
     return (
         <WeaItemBlock>
             <p>수</p>
-            <WiDaySunny className="icons" />
+            <SunnyIcon />
+            {/* <WiDaySunny className="icons" /> */}
             <p>30˚</p>
         </WeaItemBlock>
     );

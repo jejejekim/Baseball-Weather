@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../App.scss";
+import SunnyIcon from "./WeaIcon";
 
 const WeaHeadBlock = styled.div`
     position: fixed;
@@ -20,7 +21,7 @@ const WeaHeadBlock = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #f0ff49;
+        // background-color: #f0ff49;
         border-radius: 100%;
     }
 
@@ -35,7 +36,7 @@ const WeaHeadBlock = styled.div`
 function WeaHead() {
     return (
         <WeaHeadBlock>
-            <div class="icon"></div>
+            <SunnyIcon />
             <div className="timeLocation">
                 <p className="time">8/16(수)</p>
                 <p className="location">롯데자이언츠상동야구장</p>
