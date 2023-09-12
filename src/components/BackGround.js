@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Field } from "../assets/SVG/Field.svg";
+import { ReactComponent as LineField } from "../assets/SVG/lineField.svg";
 
 const BackGroundBlock = styled.div`
     position: relative;
@@ -19,7 +20,7 @@ const BackGroundBlock = styled.div`
 function BackGround() {
     return (
         <BackGroundBlock>
-            <Field className="field" />
+            <LineField className="field" />
         </BackGroundBlock>
     );
 }
