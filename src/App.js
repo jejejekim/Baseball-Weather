@@ -7,7 +7,7 @@ import BackGround from "./components/BackGround";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: #1F9A00;
+    background: #00E06D;
   }
 `;
 

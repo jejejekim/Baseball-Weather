@@ -1,33 +1,25 @@
 @font-face {
-    font-family: "Jockey One";
-    src: url();
+  font-family: "Jockey One";
+  src: url();
 }
 @font-face {
-    font-family: "Pretendard-Regular";
-    src: url("assets/font/Pretendard-Regular.woff2") format("woff2");
-    src: url("assets/font/Pretendard-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Pretendard-Regular";
+  src: url("assets/font/Pretendard-Regular.woff2") format("woff2");
+  src: url("assets/font/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
-@font-face {
-    font-family: "Pretendard-Medium";
-    src: url("assets/font/Pretendard-Medium.woff2") format("woff2");
-    src: url("assets/font/Pretendard-Medium.woff") format("woff");
-    font-weight: 600;
-    font-style: normal;
-}
-
 * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  position: relative;
 }
 
 html {
-    font-size: 16px;
-    font-family: "Pretendard-Medium";
-    font-weight: 600;
-} /*# sourceMappingURL=App.css.map */
+  font-size: 16px;
+  font-family: "Pretendard-Regular";
+  font-weight: 400;
+}/*# sourceMappingURL=App.css.map */
