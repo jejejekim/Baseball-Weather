@@ -16,13 +16,13 @@ const WeaContentBlock = styled.div`
         line-height: 1.1;
         font-size: 13.75rem;
         font-family: "Jockey One";
-        color: #fff;
+        color: #000;
     }
 
     h2 {
         line-height: 1.2;
         font-size: 2.25rem;
-        color: #fff;
+        color: #000;
         margin-bottom: 1rem;
     }
 

@@ -13,7 +13,7 @@ const WeaHeadBlock = styled.div`
     justify-content: space-between;
     font-size: 1.25rem;
     margin-left: 3rem;
-    color: #fff;
+    color: #000;
 
     .icon {
         width: 3.75rem;
@@ -36,7 +36,7 @@ const WeaHeadBlock = styled.div`
 function WeaHead() {
     return (
         <WeaHeadBlock>
-            <SunnyIcon />
+            {/* <SunnyIcon /> */}
             <div className="timeLocation">
                 <p className="time">8/16(수)</p>
                 <p className="location">롯데자이언츠상동야구장</p>
