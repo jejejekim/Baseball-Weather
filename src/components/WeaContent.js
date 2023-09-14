@@ -31,12 +31,14 @@ const WeaContentBlock = styled.div`
     }
 
     .weeklyWeather {
-        width: 28.75rem;
+        // width: 28.75rem;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         font-size: 1.125rem;
+        //갭으로 사이 공백 처리
+        gap: 0.5rem;
     }
 
     // > div:first-child {
