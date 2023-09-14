@@ -6,13 +6,13 @@ import SunnyIcon from "./WeaIcon";
 const WeaHeadBlock = styled.div`
     position: fixed;
     top: 2.25rem;
-    width: 16.438rem;
-    height: 3.25rem;
+    width: 100%;
+    // height: 3.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1.25rem;
-    margin-left: 3rem;
+    padding: 0rem 2.5rem 0rem 2.5rem;
     color: #000;
 
     .icon {
@@ -26,9 +26,9 @@ const WeaHeadBlock = styled.div`
     }
 
     .timeLocation {
-        height: 3.25rem;
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
     }
 `;

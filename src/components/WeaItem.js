@@ -3,23 +3,24 @@ import styled from "styled-components";
 import SunnyIcon from "./WeaIcon";
 
 const WeaItemBlock = styled.div`
-    width: 4rem;
-    height: 8rem;
-    border-radius: 999rem;
+    width: 4.8rem;
+    height: 8.8rem;
+    border-radius: 50%;
+    border: 2px solid #000;
     display: flex;
     align-items: center;
 
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.25);
     color: #000;
 
     .dailyWea {
-        width: 4rem;
-        height: 6rem;
+        width: 4.8rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        gap: 1.2rem;
     }
 
     //왜 되는 거지??????
@@ -33,9 +34,9 @@ function WeaItem({ day, temp }) {
     return (
         <WeaItemBlock>
             <div className="dailyWea">
-                <p>{day}</p>
-                <SunnyIcon />
                 <p>{temp}˚</p>
+                <SunnyIcon />
+                <p>{day}</p>
             </div>
         </WeaItemBlock>
     );
