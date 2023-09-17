@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import WeaItem from "./WeaItem";
+import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
 
 const WeaContentBlock = styled.div`
     position: fixed;
@@ -24,6 +25,14 @@ const WeaContentBlock = styled.div`
         font-size: 2.25rem;
         color: #000;
         margin-bottom: 1rem;
+    }
+
+    .sun {
+        margin-left: 7.2rem;
+    }
+
+    .tempreture {
+        position: absolute;
     }
 
     .summary {
@@ -53,6 +62,7 @@ function WeaContent() {
     return (
         <WeaContentBlock>
             <h1 className="tempreture">24˚</h1>
+            <Sun className="sun" />
             <h2 className="summary">야구 보러가기 딱 좋은 날씨에요!</h2>
             <div className="weeklyWeather">
                 <WeaItem day={"수"} temp={30} />
