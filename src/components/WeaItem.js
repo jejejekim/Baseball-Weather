@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SunnyIcon from "./WeaIcon";
+import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
 
 const WeaItemBlock = styled.div`
     width: 4.8rem;
@@ -23,6 +24,11 @@ const WeaItemBlock = styled.div`
         gap: 1.2rem;
     }
 
+    // .sun {
+    //     width: 2.438rem;
+    //     height: 2.438rem;
+    // }
+
     //왜 되는 거지??????
     .icon {
         width: 2rem;
@@ -35,7 +41,7 @@ function WeaItem({ day, temp }) {
         <WeaItemBlock>
             <div className="dailyWea">
                 <p>{temp}˚</p>
-                <SunnyIcon />
+                <Sun width={"2.438rem"} height={"2.438rem"} fill={"#FFB800"} />
                 <p>{day}</p>
             </div>
         </WeaItemBlock>

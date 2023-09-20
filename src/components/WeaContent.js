@@ -28,6 +28,8 @@ const WeaContentBlock = styled.div`
     }
 
     .sun {
+        width: 14.313rem;
+        height: 14.313rem;
         margin-left: 7.2rem;
     }
 
