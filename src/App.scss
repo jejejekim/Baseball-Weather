@@ -11,6 +11,13 @@
     font-weight: 400;
     font-style: normal;
 }
+@font-face {
+    font-family: "Pretendard-Medium";
+    src: url("assets/font/Pretendard-Medium.woff2") format("woff2");
+    src: url("assets/font/Pretendard-Medium.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
 
 * {
     margin: 0;
@@ -24,6 +31,6 @@
 html {
     //여기에서 rem 배수를 결정
     font-size: 16px;
-    font-family: "Pretendard-Regular";
+    font-family: "Pretendard-Medium";
     font-weight: 400;
 }

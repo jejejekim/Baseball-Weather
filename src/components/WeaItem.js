@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import SunnyIcon from "./WeaIcon";
-import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
+// import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
+import { ReactComponent as IcSun } from "../assets/SVG/icSun.svg";
 
 const WeaItemBlock = styled.div`
     width: 4.8rem;
@@ -10,6 +11,7 @@ const WeaItemBlock = styled.div`
     border: 2px solid #000;
     display: flex;
     align-items: center;
+    font-weight: 500;
 
     background: rgba(255, 255, 255);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.25);
@@ -41,7 +43,7 @@ function WeaItem({ day, temp }) {
         <WeaItemBlock>
             <div className="dailyWea">
                 <p>{temp}˚</p>
-                <Sun width={"2.438rem"} height={"2.438rem"} fill={"#FFB800"} />
+                <IcSun width={"2.438rem"} height={"2.438rem"} />
                 <p>{day}</p>
             </div>
         </WeaItemBlock>
