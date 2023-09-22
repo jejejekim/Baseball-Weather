@@ -5,7 +5,7 @@ import { ReactComponent as IcLoc } from "../assets/SVG/icLoc.svg";
 
 const WeaHeadBlock = styled.div`
     position: fixed;
-    top: 2.25rem;
+    top: 1.5rem;
     width: 100%;
     // height: 3.25rem;
     display: flex;
