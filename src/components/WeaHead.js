@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../App.scss";
-import SunnyIcon from "./WeaIcon";
+import { ReactComponent as IcLoc } from "../assets/SVG/icLoc.svg";
 
 const WeaHeadBlock = styled.div`
     position: fixed;
@@ -25,6 +25,13 @@ const WeaHeadBlock = styled.div`
         border-radius: 100%;
     }
 
+    .location {
+        display: flex;
+        gap: 0.25rem;
+        flex-direction: row;
+        align-items: center;
+    }
+
     .timeLocation {
         width: 100%;
         display: flex;
@@ -39,7 +46,10 @@ function WeaHead() {
             {/* <SunnyIcon /> */}
             <div className="timeLocation">
                 <p className="time">8/16(수)</p>
-                <p className="location">롯데자이언츠상동야구장</p>
+                <div className="location">
+                    <IcLoc />
+                    <p>롯데자이언츠상동야구장</p>
+                </div>
             </div>
         </WeaHeadBlock>
     );
