@@ -6,6 +6,7 @@ import WeaContent from "./components/WeaContent";
 import BackGround from "./components/BackGround";
 import Sunny from "./pages/Sunny";
 import Rainy from "./pages/Rainy";
+import Cloudy from "./pages/Cloudy";
 
 // const GlobalStyle = createGlobalStyle`
 //   body {
@@ -16,8 +17,9 @@ import Rainy from "./pages/Rainy";
 function App() {
     return (
         <>
-            <Sunny />
-            {/* <Rainy /> */}
+            {/* <Sunny />
+            <Rainy /> */}
+            <Cloudy />
         </>
     );
 }
