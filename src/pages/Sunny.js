@@ -32,9 +32,9 @@ function Sunny() {
     return (
         <>
             <GlobalStyle />
-            <SunnyBlock>
+            {/* <SunnyBlock>
                 <Sun className="sun" />
-            </SunnyBlock>
+            </SunnyBlock> */}
             <BackGround />
             <WeaHead />
             <WeaContent />
