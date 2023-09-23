@@ -1,8 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import WeaItem from "./WeaItem";
 import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
 import { ReactComponent as Rain } from "../assets/SVG/rain.svg";
+import { WeaItemSunny, WeaItemRainy } from "./WeaItem";
 
 const WeaContentBlock = styled.div`
     position: fixed;
@@ -15,7 +16,7 @@ const WeaContentBlock = styled.div`
     }
 
     h1 {
-        // position: absolute;
+        position: absolute;
         line-height: 1.1;
         font-size: 13.75rem;
         font-family: "Jockey One";
@@ -32,7 +33,7 @@ const WeaContentBlock = styled.div`
     .sun {
         width: 14.313rem;
         height: 14.313rem;
-        margin-left: 7.4rem;
+        margin-left: 7.3rem;
         bottom: 3.6rem;
     }
 
@@ -45,7 +46,6 @@ const WeaContentBlock = styled.div`
     }
 
     .weeklyWeather {
-        // width: 28.75rem;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -53,6 +53,10 @@ const WeaContentBlock = styled.div`
         font-size: 1.125rem;
         //갭으로 사이 공백 처리
         gap: 0.5rem;
+    }
+
+    .test {
+        color: red;
     }
 
     // > div:first-child {
@@ -68,17 +72,17 @@ function WeaContent() {
         <WeaContentBlock>
             <div className="tempreture">
                 <h1>24˚</h1>
-                {/* <Sun className="sun" /> */}
+                <Sun className="sun" />
                 {/* <Rain className="sun" /> */}
             </div>
             <h2 className="summary">야구 보러가기 딱 좋은 날씨에요!</h2>
             <div className="weeklyWeather">
-                <WeaItem day={"WED"} temp={30} />
-                <WeaItem day={"THU"} temp={28} />
-                <WeaItem day={"FRI"} temp={27} />
-                <WeaItem day={"SAT"} temp={27} />
-                <WeaItem day={"SUN"} temp={28} />
-                <WeaItem day={"TUE"} temp={25} />
+                <WeaItemSunny day={"WED"} temp={30} />
+                <WeaItemRainy day={"THU"} temp={28} />
+                <WeaItemRainy day={"FRI"} temp={27} />
+                <WeaItemSunny day={"SAT"} temp={27} />
+                <WeaItemSunny day={"SUN"} temp={28} />
+                <WeaItemSunny day={"TUE"} temp={25} />
             </div>
         </WeaContentBlock>
     );

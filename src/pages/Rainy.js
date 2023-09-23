@@ -33,7 +33,7 @@ function Rainy() {
         <>
             <RainyBlock>
                 <GlobalStyle />
-                <Rain className="rain" />
+                {/* <Rain className="rain" /> */}
                 <WeaHead />
                 <WeaContent />
             </RainyBlock>

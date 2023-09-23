@@ -16,8 +16,8 @@ import Rainy from "./pages/Rainy";
 function App() {
     return (
         <>
-            {/* <Sunny /> */}
-            <Rainy />
+            <Sunny />
+            {/* <Rainy /> */}
         </>
     );
 }

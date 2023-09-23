@@ -14,4 +14,12 @@
 <rect width="229.1" height="229.1" fill="white"/>
 </clipPath>
 </defs>
+ <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0"
+      to="360"
+      dur="10s"
+      repeatCount="indefinite" />
 </svg>
