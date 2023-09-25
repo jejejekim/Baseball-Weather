@@ -37,7 +37,7 @@ function Sunny() {
             </SunnyBlock> */}
             <BackGround />
             <WeaHead />
-            <WeaContent />
+            <WeaContent comment={"야구하기 딱 좋은 날씨에요!"} />
         </>
     );
 }

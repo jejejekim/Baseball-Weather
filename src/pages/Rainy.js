@@ -21,11 +21,11 @@ const RainyBlock = styled.div`
     left: 0;
     top: 0;
 
-    .rain {
-        left: 11.4rem;
-        top: 14rem;
-        z-index: 10;
-    }
+    // .rain {
+    //     left: 11.4rem;
+    //     top: 14rem;
+    //     z-index: 10;
+    // }
 `;
 
 function Rainy() {
@@ -35,7 +35,7 @@ function Rainy() {
                 <GlobalStyle />
                 {/* <Rain className="rain" /> */}
                 <WeaHead />
-                <WeaContent />
+                <WeaContent comment={"오늘... 야구할 수 있을까?"} />
             </RainyBlock>
             <BackGround />
         </>

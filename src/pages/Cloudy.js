@@ -16,7 +16,7 @@ function Cloudy() {
             <GlobalStyle />
             <BackGround />
             <WeaHead />
-            <WeaContent />
+            <WeaContent comment={"구름구름구름구름~"} />
         </>
     );
 }
