@@ -53,7 +53,7 @@ const WeaItemBlock = styled.div`
         align-items: center;
         font-weight: 500;
         color: #000;
-        background: #d8d8d8;
+        background: #c9c9c9;
     }
 
     .dailyWea {
