@@ -17,9 +17,9 @@ import Cloudy from "./pages/Cloudy";
 function App() {
     return (
         <>
-            {/* <Sunny />
-            <Rainy /> */}
-            <Cloudy />
+            {/* <Sunny /> */}
+            <Rainy />
+            {/* <Cloudy /> */}
         </>
     );
 }

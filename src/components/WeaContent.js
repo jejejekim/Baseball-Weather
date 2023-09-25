@@ -17,7 +17,6 @@ const WeaContentBlock = styled.div`
     }
 
     h1 {
-        position: absolute;
         line-height: 1.1;
         font-size: 13.75rem;
         font-family: "Jockey One";
@@ -34,12 +33,56 @@ const WeaContentBlock = styled.div`
     .sun {
         width: 14.313rem;
         height: 14.313rem;
-        margin-left: 7.3rem;
+        margin-left: 9.1rem;
         bottom: 3.6rem;
     }
 
-    .tempreture {
-        position: relative;
+    .rain {
+        width: 14.313rem;
+        height: 14.313rem;
+        margin-left: 9.1rem;
+        bottom: 3.6rem;
+
+        path {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            animation: dash 3s ease-in-out forwards infinite;
+
+            &:nth-child(1) {
+                animation-delay: 0s;
+            }
+            &:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            &:nth-child(3) {
+                animation-delay: 0.6s;
+            }
+            &:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+        }
+    }
+
+    .cloud {
+        width: 14.313rem;
+        height: 14.313rem;
+        margin-left: 9.2rem;
+        bottom: 3.6rem;
+
+        path {
+            // stroke-dasharray: 1;
+            // stroke-dashoffset: 1;
+            animation: floating 10s forwards infinite;
+        }
+    }
+
+    .temp {
+        position: absolute;
+        display: flex;
+    }
+
+    .tempNum {
+        width: 12.75rem;
     }
 
     .summary {
@@ -60,26 +103,51 @@ const WeaContentBlock = styled.div`
         color: red;
     }
 
-    // > div:first-child {
-    //     width: 5rem;
-    //     height: 9.25rem;
-    //     background: rgba(255, 255, 255);
-    //     font-size: 1.25rem;
-    // }
+    @keyframes dash {
+        0% {
+            stroke-dashoffset: 1;
+            stroke-dasharray: 0.5;
+        }
+        60% {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 1;
+        }
+        100% {
+            stroke-dashoffset: 0.5;
+            stroke-dasharray: 1;
+        }
+    }
+
+    @keyframes floating {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+        70% {
+            opacity: 1;
+            transform: translateZ(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateZ(0);
+        }
+    }
 `;
 
-function WeaContent() {
+function WeaContent({ comment }) {
     return (
         <WeaContentBlock>
-            <div className="tempreture">
-                <h1>24˚</h1>
-                {/* <Sun className="sun" /> */}
-                {/* <Rain className="sun" /> */}
-                <Cloud className="sun" />
+            <div className="temp">
+                <h1 className="tempNum">24</h1>
+                <h1>˚</h1>
             </div>
-            <h2 className="summary">야구 보러가기 딱 좋은 날씨에요!</h2>
+            {/* <Sun className="sun" /> */}
+            <Rain className="rain" />
+            {/* <Cloud className="cloud" /> */}
+
+            <h2 className="summary">{comment}</h2>
             <div className="weeklyWeather">
-                <WeaItemSunny day={"수"} temp={30} num={1} />
+                <WeaItemRainy day={"수"} temp={24} num={1} />
                 <WeaItemRainy day={"목"} temp={28} />
                 <WeaItemRainy day={"금"} temp={27} />
                 <WeaItemCloudy day={"토"} temp={27} />
