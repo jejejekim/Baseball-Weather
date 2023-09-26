@@ -82,12 +82,15 @@ function App() {
 
     getUserLocation();
 
+    //test
+    const weather = "rain";
+
     return (
         <>
             <WeaBlock>
                 <GlobalStyle />
-                {/* <Rain className="rain" /> */}
                 <WeaHead />
+                {/* <WeaContent comment={"오늘... 야구할 수 있을까?"} weather={weather} /> */}
                 <WeaContent weatherRes={weatherRes} comment={"오늘... 야구할 수 있을까?"} />
             </WeaBlock>
             <BackGround />

@@ -5,6 +5,7 @@ import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
 import { ReactComponent as Rain } from "../assets/SVG/rain.svg";
 import { ReactComponent as Cloud } from "../assets/SVG/cloud.svg";
 import { WeaItemSunny, WeaItemRainy, WeaItemCloudy } from "./WeaItem";
+import Rainy from "../pages/Rainy";
 
 const WeaContentBlock = styled.div`
     position: fixed;
@@ -76,6 +77,13 @@ const WeaContentBlock = styled.div`
         }
     }
 
+    .none {
+        width: 14.313rem;
+        height: 14.313rem;
+        margin-left: 9.2rem;
+        bottom: 3.6rem;
+    }
+
     .temp {
         position: absolute;
         display: flex;
@@ -134,17 +142,31 @@ const WeaContentBlock = styled.div`
     }
 `;
 
-function WeaContent({ weatherRes, comment }) {
+function WeaContent({ weatherRes, comment, weather }) {
     const tempNum = Math.round(weatherRes.main.temp);
 
     return (
         <WeaContentBlock>
             <div className="temp">
+                {/* <h1 className="tempNum">24</h1> */}
                 <h1 className="tempNum">{tempNum}</h1>
                 <h1>˚</h1>
             </div>
+
+            <div>
+                {weather == "clear" ? (
+                    <Sun className="sun" />
+                ) : weather == "rain" ? (
+                    <Rain className="rain" />
+                ) : weather == "clouds" ? (
+                    <Cloud className="cloud" />
+                ) : (
+                    <div className="none"></div>
+                )}
+            </div>
+
             {/* <Sun className="sun" /> */}
-            <Rain className="rain" />
+            {/* <Rain className="rain" /> */}
             {/* <Cloud className="cloud" /> */}
 
             <h2 className="summary">{comment}</h2>
