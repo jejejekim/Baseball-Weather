@@ -134,11 +134,13 @@ const WeaContentBlock = styled.div`
     }
 `;
 
-function WeaContent({ comment }) {
+function WeaContent({ weatherRes, comment }) {
+    const tempNum = Math.round(weatherRes.main.temp);
+
     return (
         <WeaContentBlock>
             <div className="temp">
-                <h1 className="tempNum">24</h1>
+                <h1 className="tempNum">{tempNum}</h1>
                 <h1>˚</h1>
             </div>
             {/* <Sun className="sun" /> */}
