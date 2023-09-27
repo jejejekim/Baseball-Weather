@@ -26,7 +26,7 @@ const WeaBlock = styled.div`
 `;
 
 function App() {
-    const [weatherRes, setWeatherRes] = useState(null);
+    const [weatherRes, setWeatherRes] = useState("");
 
     const getWeather = async (lat, lon) => {
         try {
@@ -36,7 +36,11 @@ function App() {
             );
             const res = await req.json();
 
-            setWeatherRes(res);
+            //넘겨 줄 정보 세팅
+            setWeatherRes({
+                temp: res.main.temp,
+                weather: res.weather[0].main,
+            });
 
             // const weather = res.weather[0].main; //날씨
             // const temp = Math.round(res.main.temp); //온도(반올림)
@@ -82,16 +86,13 @@ function App() {
 
     getUserLocation();
 
-    //test
-    const weather = "rain";
-
     return (
         <>
             <WeaBlock>
                 <GlobalStyle />
                 <WeaHead />
                 {/* <WeaContent comment={"오늘... 야구할 수 있을까?"} weather={weather} /> */}
-                <WeaContent weatherRes={weatherRes} comment={"오늘... 야구할 수 있을까?"} />
+                <WeaContent weatherRes={weatherRes} />
             </WeaBlock>
             <BackGround />
 
