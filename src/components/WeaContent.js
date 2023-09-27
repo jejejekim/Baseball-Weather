@@ -142,34 +142,40 @@ const WeaContentBlock = styled.div`
     }
 `;
 
-function WeaContent({ weatherRes, comment, weather }) {
-    const tempNum = Math.round(weatherRes.main.temp);
+function WeaContent({ weatherRes }) {
+    const tempNum = Math.round(weatherRes.temp); //온도
+    const weather = weatherRes.weather; //날씨씨
 
     return (
         <WeaContentBlock>
             <div className="temp">
-                {/* <h1 className="tempNum">24</h1> */}
                 <h1 className="tempNum">{tempNum}</h1>
                 <h1>˚</h1>
             </div>
 
             <div>
-                {weather == "clear" ? (
+                {weather == "Clear" ? (
                     <Sun className="sun" />
-                ) : weather == "rain" ? (
+                ) : weather == "Rain" ? (
                     <Rain className="rain" />
-                ) : weather == "clouds" ? (
+                ) : weather == "Clouds" ? (
                     <Cloud className="cloud" />
                 ) : (
                     <div className="none"></div>
                 )}
             </div>
 
-            {/* <Sun className="sun" /> */}
-            {/* <Rain className="rain" /> */}
-            {/* <Cloud className="cloud" /> */}
-
-            <h2 className="summary">{comment}</h2>
+            <h2 className="summary">
+                {weather == "Clear" ? (
+                    "야구보기 딱 좋은 날씨에요!"
+                ) : weather == "Rain" ? (
+                    "오늘... 야구할 수 있을까?"
+                ) : weather == "Clouds" ? (
+                    "시원하게 야구 볼 수 있겠다!"
+                ) : (
+                    <div className="none"></div>
+                )}
+            </h2>
             <div className="weeklyWeather">
                 <WeaItemRainy day={"수"} temp={24} num={1} />
                 <WeaItemRainy day={"목"} temp={28} />
