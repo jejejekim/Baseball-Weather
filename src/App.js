@@ -8,6 +8,7 @@ import BackGround from "./components/BackGround";
 import Sunny from "./pages/Sunny";
 import Rainy from "./pages/Rainy";
 import Cloudy from "./pages/Cloudy";
+import Calendar from "./Calendar";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -20,13 +21,18 @@ const WeaBlock = styled.div`
     height: 100vh;
     z-index: 100;
     position: fixed;
-    background-color: rgba(0, 57, 159, 0.2);
     left: 0;
     top: 0;
+
+    // background-color: rgba(0, 57, 159, 0.2);
 `;
 
 function App() {
-    const [weatherRes, setWeatherRes] = useState("");
+    const [weatherRes, setWeatherRes] = useState({
+        temp: 0,
+        weather: "",
+    });
+    const [raining, setRaining] = useState(false);
 
     const getWeather = async (lat, lon) => {
         try {
@@ -36,14 +42,15 @@ function App() {
             );
             const res = await req.json();
 
+            // console.log(res);
+
             //넘겨 줄 정보 세팅
             setWeatherRes({
                 temp: res.main.temp,
                 weather: res.weather[0].main,
             });
 
-            // const weather = res.weather[0].main; //날씨
-            // const temp = Math.round(res.main.temp); //온도(반올림)
+            setRaining(weatherRes.weather == "Rain" ? true : false);
         } catch (err) {
             console.log(err);
         }
@@ -51,18 +58,6 @@ function App() {
 
     const success = ({ coords, timestamp }) => {
         // console.log(coords);
-        const date = new Date(timestamp);
-        const year = date.getFullYear(); //년
-        const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1; //월(0부터 시작하기 때문에 +1)
-        const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate(); //일
-        const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours(); //시
-        const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes(); //분
-
-        // document.querySelector(
-        //     ".contents .time"
-        // ).innerHTML = `${hour}:${minute} ${month}/${day}/${year}`;
-        // document.querySelector(".calendar .month").innerHTML = month;
-        // document.querySelector(".calendar .day").innerHTML = day;
 
         //겟 웨더 함수가 실행될 때 위도, 경도를 불러옴
         getWeather(coords.latitude, coords.longitude);
@@ -75,30 +70,18 @@ function App() {
             //위치 정보를 받아오는 데에 성공했을 때 succes인자가 무조건 있어야 함
             navigator.geolocation.getCurrentPosition(success);
         }
-
-        // navigator.geolocation.getCurrentPosition((position) => {
-        //     let lat = position.coords.latitude;
-        //     let lon = position.coords.longitude;
-
-        //     getWeather(lat, lon);
-        // });
     };
 
     getUserLocation();
 
     return (
         <>
-            <WeaBlock>
+            <WeaBlock backgroud-color={raining ? "rgba(0, 57, 159, 0.2)" : ""}>
                 <GlobalStyle />
                 <WeaHead />
-                {/* <WeaContent comment={"오늘... 야구할 수 있을까?"} weather={weather} /> */}
                 <WeaContent weatherRes={weatherRes} />
             </WeaBlock>
             <BackGround />
-
-            {/* <Sunny /> */}
-            {/* <Rainy weatherRes={weatherRes} /> */}
-            {/* <Cloudy /> */}
         </>
     );
 }

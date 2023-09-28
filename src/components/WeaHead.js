@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "../App.scss";
 import { ReactComponent as IcLoc } from "../assets/SVG/icLoc.svg";
+import { today } from "../Calendar";
 
 const WeaHeadBlock = styled.div`
     position: fixed;
@@ -45,7 +46,7 @@ function WeaHead() {
         <WeaHeadBlock>
             {/* <SunnyIcon /> */}
             <div className="timeLocation">
-                <p className="time">8/16(수)</p>
+                <p className="time">1/1(목)</p>
                 <div className="location">
                     <IcLoc />
                     <p>롯데자이언츠상동야구장</p>

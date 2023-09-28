@@ -6,6 +6,8 @@ import { ReactComponent as Rain } from "../assets/SVG/rain.svg";
 import { ReactComponent as Cloud } from "../assets/SVG/cloud.svg";
 import { WeaItemSunny, WeaItemRainy, WeaItemCloudy } from "./WeaItem";
 import Rainy from "../pages/Rainy";
+import Calendar from "../Calendar";
+import WeaItem from "./WeaItem";
 
 const WeaContentBlock = styled.div`
     position: fixed;
@@ -144,7 +146,15 @@ const WeaContentBlock = styled.div`
 
 function WeaContent({ weatherRes }) {
     const tempNum = Math.round(weatherRes.temp); //온도
-    const weather = weatherRes.weather; //날씨씨
+    const weather = weatherRes.weather; //날씨
+    const weeklyWeather = ["Rain", "Clear", "Clouds", "Clouds", "Clouds", "Rain", "Clouds"];
+
+    // const weeklyWeather = [];
+    // for (let i = 0; i < 7; i++) {
+    //     weeklyWeather.push(
+
+    //     );
+    // }
 
     return (
         <WeaContentBlock>
@@ -177,12 +187,7 @@ function WeaContent({ weatherRes }) {
                 )}
             </h2>
             <div className="weeklyWeather">
-                <WeaItemRainy day={"수"} temp={24} num={1} />
-                <WeaItemRainy day={"목"} temp={28} />
-                <WeaItemRainy day={"금"} temp={27} />
-                <WeaItemCloudy day={"토"} temp={27} />
-                <WeaItemCloudy day={"일"} temp={28} />
-                <WeaItemSunny day={"화"} temp={25} />
+                <Calendar tempNum={tempNum} weeklyWeather={weeklyWeather} />
             </div>
         </WeaContentBlock>
     );
