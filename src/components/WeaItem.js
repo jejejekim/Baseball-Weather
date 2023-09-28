@@ -65,105 +65,151 @@ const WeaItemBlock = styled.div`
         gap: 1.2rem;
     }
 
-    //왜 되는 거지??????
-    .icon {
-        width: 2rem;
-        height: 2rem;
+    .dailyIcon {
     }
 `;
 
-function WeaItemSunny({ day, temp, num }) {
-    const [isHovering, setIsHovering] = useState(false);
+// function WeaItemSunny({ day, temp, num }) {
+//     const [isHovering, setIsHovering] = useState(false);
 
+//     const handleMouseOver = () => {
+//         setIsHovering(true);
+//     };
+
+//     const handleMouseOut = () => {
+//         setIsHovering(false);
+//     };
+
+//     return (
+//         <WeaItemBlock>
+//             <div
+//                 className={isHovering || num == 1 ? "hoverSunny" : "default"}
+//                 onMouseOver={handleMouseOver}
+//                 onMouseOut={handleMouseOut}
+//             >
+//                 <div className="dailyWea">
+//                     <p>{temp}˚</p>
+//                     <IcSun
+//                         width={"2.438rem"}
+//                         height={"2.438rem"}
+//                         fill={isHovering || num == 1 ? "#000" : "#FFB800"}
+//                     />
+//                     <p>{day}</p>
+//                 </div>
+//             </div>
+//         </WeaItemBlock>
+//     );
+// }
+
+// function WeaItemRainy({ day, temp, num }) {
+//     const [isHovering, setIsHovering] = useState(false);
+
+//     const handleMouseOver = () => {
+//         setIsHovering(true);
+//     };
+
+//     const handleMouseOut = () => {
+//         setIsHovering(false);
+//     };
+//     return (
+//         <WeaItemBlock>
+//             <div
+//                 className={isHovering || num == 1 ? "hoverRainy" : "default"}
+//                 onMouseOver={handleMouseOver}
+//                 onMouseOut={handleMouseOut}
+//             >
+//                 <div className="dailyWea">
+//                     <p>{temp}˚</p>
+//                     <IcRain
+//                         width={"2.125rem"}
+//                         height={"2.438rem"}
+//                         fill={isHovering || num == 1 ? "#fff" : "#0F63FB"}
+//                     />
+//                     <p>{day}</p>
+//                 </div>
+//             </div>
+//         </WeaItemBlock>
+//     );
+// }
+
+// function WeaItemCloudy({ day, temp, num }) {
+//     const [isHovering, setIsHovering] = useState(false);
+
+//     const handleMouseOver = () => {
+//         setIsHovering(true);
+//     };
+
+//     const handleMouseOut = () => {
+//         setIsHovering(false);
+//     };
+//     return (
+//         <WeaItemBlock>
+//             <div
+//                 className={isHovering || num == 1 ? "hoverCloudy" : "default"}
+//                 onMouseOver={handleMouseOver}
+//                 onMouseOut={handleMouseOut}
+//             >
+//                 <div className="dailyWea">
+//                     <p>{temp}˚</p>
+//                     <IcCloud
+//                         width={"3.250rem"}
+//                         height={"2.438rem"}
+//                         fill={isHovering || num == 1 ? "#000" : "#808080"}
+//                     />
+//                     <p>{day}</p>
+//                 </div>
+//             </div>
+//         </WeaItemBlock>
+//     );
+// }
+
+function WeaItem({ day, tempNum, weather }) {
+    //호버
+    const [isHovering, setIsHovering] = useState(false);
     const handleMouseOver = () => {
         setIsHovering(true);
     };
-
-    const handleMouseOut = () => {
-        setIsHovering(false);
-    };
-
-    return (
-        <WeaItemBlock>
-            <div
-                className={isHovering || num == 1 ? "hoverSunny" : "default"}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-            >
-                <div className="dailyWea">
-                    <p>{temp}˚</p>
-                    <IcSun
-                        width={"2.438rem"}
-                        height={"2.438rem"}
-                        fill={isHovering || num == 1 ? "#000" : "#FFB800"}
-                    />
-                    <p>{day}</p>
-                </div>
-            </div>
-        </WeaItemBlock>
-    );
-}
-
-function WeaItemRainy({ day, temp, num }) {
-    const [isHovering, setIsHovering] = useState(false);
-
-    const handleMouseOver = () => {
-        setIsHovering(true);
-    };
-
     const handleMouseOut = () => {
         setIsHovering(false);
     };
     return (
-        <WeaItemBlock>
-            <div
-                className={isHovering || num == 1 ? "hoverRainy" : "default"}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-            >
-                <div className="dailyWea">
-                    <p>{temp}˚</p>
-                    <IcRain
-                        width={"2.125rem"}
-                        height={"2.438rem"}
-                        fill={isHovering || num == 1 ? "#fff" : "#0F63FB"}
-                    />
-                    <p>{day}</p>
+        <>
+            <WeaItemBlock>
+                <div className="default">
+                    <div className="dailyWea">
+                        <p>{tempNum}˚</p>
+                        <div className="dailyIcon">
+                            {weather == "Clear" ? (
+                                <IcSun
+                                    className="icSun"
+                                    width={"2.438rem"}
+                                    height={"2.438rem"}
+                                    fill={"#FFB800"}
+                                />
+                            ) : weather == "Rain" ? (
+                                <IcRain
+                                    className="icRain"
+                                    width={"2.125rem"}
+                                    height={"2.438rem"}
+                                    fill="#0F63FB"
+                                />
+                            ) : weather == "Clouds" ? (
+                                <IcCloud
+                                    className="icCloud"
+                                    width={"3.250rem"}
+                                    height={"2.438rem"}
+                                    fill="#808080"
+                                />
+                            ) : (
+                                <div className="none"></div>
+                            )}
+                        </div>
+                        <p>{day}</p>
+                    </div>
                 </div>
-            </div>
-        </WeaItemBlock>
+            </WeaItemBlock>
+        </>
     );
 }
 
-function WeaItemCloudy({ day, temp, num }) {
-    const [isHovering, setIsHovering] = useState(false);
-
-    const handleMouseOver = () => {
-        setIsHovering(true);
-    };
-
-    const handleMouseOut = () => {
-        setIsHovering(false);
-    };
-    return (
-        <WeaItemBlock>
-            <div
-                className={isHovering || num == 1 ? "hoverCloudy" : "default"}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-            >
-                <div className="dailyWea">
-                    <p>{temp}˚</p>
-                    <IcCloud
-                        width={"3.250rem"}
-                        height={"2.438rem"}
-                        fill={isHovering || num == 1 ? "#000" : "#808080"}
-                    />
-                    <p>{day}</p>
-                </div>
-            </div>
-        </WeaItemBlock>
-    );
-}
-
-export { WeaItemSunny, WeaItemRainy, WeaItemCloudy };
+export default WeaItem;
