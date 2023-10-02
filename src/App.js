@@ -31,6 +31,7 @@ function App() {
     const [weatherRes, setWeatherRes] = useState({
         temp: 0,
         weather: "",
+        location: "롯데자이언츠상동야구장",
     });
     const [raining, setRaining] = useState(false);
 
@@ -48,6 +49,7 @@ function App() {
             setWeatherRes({
                 temp: res.main.temp,
                 weather: res.weather[0].main,
+                location: res.name,
             });
 
             setRaining(weatherRes.weather == "Rain" ? true : false);
@@ -78,7 +80,6 @@ function App() {
         <>
             <WeaBlock backgroud-color={raining ? "rgba(0, 57, 159, 0.2)" : ""}>
                 <GlobalStyle />
-                <WeaHead />
                 <WeaContent weatherRes={weatherRes} />
             </WeaBlock>
             <BackGround />
