@@ -28,7 +28,11 @@ const Calendar = ({ location }) => {
     //날씨 정보가 들어갈 빈 리스트
     const weekList = [];
     //테스트용 weather
-    const weeklyWeather = ["Rain", "Clear", "Clouds", "Clouds", "Clouds", "Rain", "Clouds"];
+    const weeklyWeather = ["Clouds", "Clouds", "Clear", "Clear", "Clouds", "Rain", "Rain"];
+
+    for (let i = 0; i < 7; i++) {
+        weeklyWeather.push();
+    }
 
     for (let i = 0; i < 7; i++) {
         weekList.push(
@@ -37,6 +41,7 @@ const Calendar = ({ location }) => {
                 tempNum="23"
                 weather={weeklyWeather[i]}
                 key={i}
+                num={i}
             ></WeaItem>
         );
     }
