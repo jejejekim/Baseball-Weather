@@ -147,7 +147,7 @@ const WeaContentBlock = styled.div`
 function WeaContent({ weatherRes }) {
     const tempNum = Math.round(weatherRes.temp); //온도
     const weather = weatherRes.weather; //날씨
-    const weeklyWeather = ["Rain", "Clear", "Clouds", "Clouds", "Clouds", "Rain", "Clouds"];
+    const location = weatherRes.location; //날씨
 
     // const weeklyWeather = [];
     // for (let i = 0; i < 7; i++) {
@@ -171,23 +171,21 @@ function WeaContent({ weatherRes }) {
                 ) : weather == "Clouds" ? (
                     <Cloud className="cloud" />
                 ) : (
-                    <div className="none"></div>
+                    <Sun className="sun" />
                 )}
             </div>
 
             <h2 className="summary">
-                {weather == "Clear" ? (
-                    "야구보기 딱 좋은 날씨에요!"
-                ) : weather == "Rain" ? (
-                    "오늘... 야구할 수 있을까?"
-                ) : weather == "Clouds" ? (
-                    "시원하게 야구 볼 수 있겠다!"
-                ) : (
-                    <div className="none"></div>
-                )}
+                {weather == "Clear"
+                    ? "야구보기 딱 좋은 날씨에요!"
+                    : weather == "Rain"
+                    ? "오늘... 야구할 수 있을까?"
+                    : weather == "Clouds"
+                    ? "시원하게 야구 볼 수 있겠다!"
+                    : "기본 멘트 입니다"}
             </h2>
             <div className="weeklyWeather">
-                <Calendar tempNum={tempNum} weeklyWeather={weeklyWeather} />
+                <Calendar tempNum={tempNum} location={location} />
             </div>
         </WeaContentBlock>
     );

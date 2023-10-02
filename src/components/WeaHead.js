@@ -8,12 +8,11 @@ const WeaHeadBlock = styled.div`
     position: fixed;
     top: 1.5rem;
     width: 100%;
-    // height: 3.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1.25rem;
-    padding: 0rem 2.5rem 0rem 2.5rem;
+    padding: 0rem 6rem 0rem 0rem;
     color: #000;
 
     .icon {
@@ -41,15 +40,17 @@ const WeaHeadBlock = styled.div`
     }
 `;
 
-function WeaHead() {
+function WeaHead({ month, today, day, location }) {
     return (
         <WeaHeadBlock>
             {/* <SunnyIcon /> */}
             <div className="timeLocation">
-                <p className="time">1/1(목)</p>
+                <p className="time">
+                    {month}/{today}({day})
+                </p>
                 <div className="location">
                     <IcLoc />
-                    <p>롯데자이언츠상동야구장</p>
+                    <p>{location}</p>
                 </div>
             </div>
         </WeaHeadBlock>

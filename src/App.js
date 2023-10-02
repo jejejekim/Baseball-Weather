@@ -31,6 +31,7 @@ function App() {
     const [weatherRes, setWeatherRes] = useState({
         temp: 0,
         weather: "",
+        location: "롯데자이언츠상동야구장",
     });
     const [raining, setRaining] = useState(false);
 
@@ -39,6 +40,7 @@ function App() {
             const apiKey = "135fc4078d2369b399cd82144775cf19";
             const req = await fetch(
                 `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+                // `api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${apiKey}&units=metric` //16일치 날씨 정보
             );
             const res = await req.json();
 
@@ -48,6 +50,7 @@ function App() {
             setWeatherRes({
                 temp: res.main.temp,
                 weather: res.weather[0].main,
+                location: res.name,
             });
 
             setRaining(weatherRes.weather == "Rain" ? true : false);
@@ -78,7 +81,6 @@ function App() {
         <>
             <WeaBlock backgroud-color={raining ? "rgba(0, 57, 159, 0.2)" : ""}>
                 <GlobalStyle />
-                <WeaHead />
                 <WeaContent weatherRes={weatherRes} />
             </WeaBlock>
             <BackGround />

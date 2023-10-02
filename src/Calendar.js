@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import WeaItem from "./components/WeaItem";
+import WeaHead from "./components/WeaHead";
 
 const CalBlock = styled.div`
     .weeklyWeather {
@@ -14,7 +15,7 @@ const CalBlock = styled.div`
     }
 `;
 
-const Calendar = () => {
+const Calendar = ({ location }) => {
     //날짜
     const date = new Date();
     const year = date.getFullYear(); //년
@@ -22,25 +23,32 @@ const Calendar = () => {
     const today = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate(); //일
     const day = date.getDay(); //요일
 
-    const lastday = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    // const lastday = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     const week = ["일", "월", "화", "수", "목", "금", "토"]; //일주일
-
-    // const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours(); //시
-    // const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes(); //분
-
-    // const [weaklist, setWeaklist] = useState([]);
+    //날씨 정보가 들어갈 빈 리스트
     const weekList = [];
     //테스트용 weather
-    const weeklyWeather = ["Rain", "Clear", "Clouds", "Clouds", "Clouds", "Rain", "Clouds"];
+    const weeklyWeather = ["Clouds", "Clouds", "Clear", "Clear", "Clouds", "Rain", "Rain"];
+
+    for (let i = 0; i < 7; i++) {
+        weeklyWeather.push();
+    }
 
     for (let i = 0; i < 7; i++) {
         weekList.push(
-            <WeaItem day={week[(i + day) % 7]} tempNum="23" weather={weeklyWeather[i]}></WeaItem>
+            <WeaItem
+                day={week[(i + day) % 7]}
+                tempNum="23"
+                weather={weeklyWeather[i]}
+                key={i}
+                num={i}
+            ></WeaItem>
         );
     }
 
     return (
         <CalBlock>
+            <WeaHead month={month} today={today} day={week[day]} location={location} />
             <div className="weeklyWeather">{weekList}</div>
         </CalBlock>
     );
