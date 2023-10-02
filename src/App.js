@@ -40,6 +40,7 @@ function App() {
             const apiKey = "135fc4078d2369b399cd82144775cf19";
             const req = await fetch(
                 `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+                // `api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${apiKey}&units=metric` //16일치 날씨 정보
             );
             const res = await req.json();
 
