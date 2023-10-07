@@ -149,13 +149,6 @@ function WeaContent({ weatherRes }) {
     const weather = weatherRes.weather; //날씨
     const location = weatherRes.location; //날씨
 
-    // const weeklyWeather = [];
-    // for (let i = 0; i < 7; i++) {
-    //     weeklyWeather.push(
-
-    //     );
-    // }
-
     return (
         <WeaContentBlock>
             <div className="temp">
