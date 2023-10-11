@@ -29,22 +29,33 @@ function App() {
         location: "롯데자이언츠상동야구장",
     });
     const [raining, setRaining] = useState(false);
+    const apiKey =
+        "ljsWVYgdEhgUE5uPjMFMpoKgNbrIGcgSuUMI7c4UmNr5E88U5%2Bu%2FWJAePHSow38OEGSaHweiYgWTmb7LsPW3RQ%3D%3D";
+    const type = "JSON";
 
-    const getWeather = async (lat, lon) => {
+    const getWeather = async () => {
         try {
             const req = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=metric`
-                // `api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${apiKey}&units=metric` //16일치 날씨 정보
+                `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apiKey}&numOfRows=14&pageNo=1&dataType=${type}&base_date=20231011&base_time=0500&nx=55&ny=127`
+                // `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey=${apiKey}&numOfRows=1&pageNo=1&dataType=${type}&regId=11D10000&tmFc=202310110600`
             );
-            const res = await req.json();
 
-            // console.log(res);
+            const res = await req.json(); //JSON으로 변환
+            const resp = res.response.body.items.item;
+
+            // console.log(resp);
+
+            // POP: 강수확률 [7]
+            // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4)
+            // TMP: 1시간 기온 [0]
+            // PTY: 강수형태 [6] 없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
 
             //넘겨 줄 정보 세팅
             setWeatherRes({
-                temp: res.main.temp,
-                weather: res.weather[0].main,
-                location: res.name,
+                temp: resp[0].fcstValue,
+                sky: resp[5].fcstValue,
+                pty: resp[6].fcstValue,
+                location: "롯데자이언츠상동야구장",
             });
 
             setRaining(weatherRes.weather == "Rain" ? true : false);
