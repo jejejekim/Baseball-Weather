@@ -146,8 +146,26 @@ const WeaContentBlock = styled.div`
 
 function WeaContent({ weatherRes }) {
     const tempNum = Math.round(weatherRes.temp); //온도
-    const weather = weatherRes.weather; //날씨
-    const location = weatherRes.location; //날씨
+    const sky = weatherRes.sky; //하늘 상황
+    const pty = weatherRes.pty; //강수 상태
+    const location = weatherRes.location; //위치
+
+    // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4)
+    // PTY: 강수형태 [6] 없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
+
+    // let weather = "";
+
+    // if (pty == 0) {
+    //     if (sky == 1) {
+    //         return (weather = "Clear");
+    //     } else if (sky == 3 || sky == 4) {
+    //         return (weather = "Clouds");
+    //     }
+    // } else {
+    //     return weather == "Rain";
+    // }
+
+    // console.log(weather);
 
     return (
         <WeaContentBlock>
@@ -157,11 +175,11 @@ function WeaContent({ weatherRes }) {
             </div>
 
             <div>
-                {weather == "Clear" ? (
+                {sky == 1 ? (
                     <Sun className="sun" />
-                ) : weather == "Rain" ? (
+                ) : pty > 0 ? (
                     <Rain className="rain" />
-                ) : weather == "Clouds" ? (
+                ) : sky == 3 || sky == 4 ? (
                     <Cloud className="cloud" />
                 ) : (
                     <Sun className="sun" />
@@ -169,11 +187,11 @@ function WeaContent({ weatherRes }) {
             </div>
 
             <h2 className="summary">
-                {weather == "Clear"
+                {sky == 1
                     ? "야구보기 딱 좋은 날씨에요!"
-                    : weather == "Rain"
+                    : pty > 0
                     ? "오늘... 야구할 수 있을까?"
-                    : weather == "Clouds"
+                    : sky == 3 || sky == 4
                     ? "시원하게 야구 볼 수 있겠다!"
                     : "기본 멘트 입니다"}
             </h2>
