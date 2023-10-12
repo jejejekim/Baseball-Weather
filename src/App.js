@@ -64,11 +64,38 @@ function App() {
         }
     };
 
-    const success = ({ coords, timestamp }) => {
+    const getWeeklyWeather = async () => {
+        try {
+            const req2 = await fetch(
+                // `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apiKey}&numOfRows=14&pageNo=1&dataType=${type}&base_date=20231011&base_time=0500&nx=55&ny=127`
+                `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey=${apiKey}&numOfRows=1&pageNo=1&dataType=${type}&regId=11D10000&tmFc=202310121800`
+            );
+
+            const res2 = await req2.json(); //JSON으로 변환
+            const resp2 = res2.response.body.items.item;
+
+            console.log(resp2);
+
+            //넘겨 줄 정보 세팅
+            // setWeatherRes({
+            //     temp: resp[0].fcstValue,
+            //     sky: resp[5].fcstValue,
+            //     pty: resp[6].fcstValue,
+            //     location: "롯데자이언츠상동야구장",
+            // });
+
+            // setRaining(weatherRes.weather == "Rain" ? true : false);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const success = () => {
         // console.log(coords);
 
         //겟 웨더 함수가 실행될 때 위도, 경도를 불러옴
-        getWeather(coords.latitude, coords.longitude);
+        getWeather();
+        getWeeklyWeather();
     };
 
     const getUserLocation = () => {
