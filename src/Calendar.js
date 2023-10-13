@@ -15,7 +15,7 @@ const CalBlock = styled.div`
     }
 `;
 
-const Calendar = ({ location }) => {
+const Calendar = ({ tempNum, sky, pty, location }) => {
     //날짜
     const date = new Date();
     const year = date.getFullYear(); //년
@@ -25,20 +25,42 @@ const Calendar = ({ location }) => {
 
     // const lastday = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     const week = ["일", "월", "화", "수", "목", "금", "토"]; //일주일
-    //날씨 정보가 들어갈 빈 리스트
+    //통합 정보가 들어갈 빈 리스트
     const weekList = [];
-    //테스트용 weather
-    const weeklyWeather = ["Clouds", "Clouds", "Clear", "Clear", "Clouds", "Rain", "Rain"];
+    //날씨 정보가 들어갈 빈 리스트
+    const weeklyWeather = [];
 
     for (let i = 0; i < 7; i++) {
-        weeklyWeather.push();
+        // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4)
+        // - 맑음
+        // - 구름많음, 구름많고 비, 구름많고 눈, 구름많고 비/눈, 구름많고 소나기
+        // - 흐림, 흐리고 비, 흐리고 눈, 흐리고 비/눈, 흐리고 소나기
+
+        // PTY: 강수형태 [6] //없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
+        if (sky[i] == "1" || sky[i] == "맑음") {
+            weeklyWeather.push("Clear");
+        } else if (
+            pty[i] > 0 ||
+            sky[i] == "구름많고 비" ||
+            sky[i] == "구름많고 소나기" ||
+            sky[i] == "흐리고 소나기" ||
+            sky[i] == "흐리고 비"
+        ) {
+            weeklyWeather.push("Rain");
+        } else if (sky[i] == "3" || sky[i] == "4" || sky[i] == "구름많음" || sky[i] == "흐림") {
+            weeklyWeather.push("Clouds");
+        } else {
+            weeklyWeather.push("Null");
+        }
     }
+
+    console.log(weeklyWeather);
 
     for (let i = 0; i < 7; i++) {
         weekList.push(
             <WeaItem
                 day={week[(i + day) % 7]}
-                tempNum="23"
+                tempNum={tempNum[i]}
                 weather={weeklyWeather[i]}
                 key={i}
                 num={i}

@@ -145,13 +145,17 @@ const WeaContentBlock = styled.div`
 `;
 
 function WeaContent({ weatherRes }) {
-    const tempNum = Math.round(weatherRes.temp); //온도
+    const tempNum = weatherRes.temp; //온도
     const sky = weatherRes.sky; //하늘 상황
+    // const sky2 = weatherRes.sky2;
     const pty = weatherRes.pty; //강수 상태
+    const pop = weatherRes.pop; //강수 확률
     const location = weatherRes.location; //위치
 
-    // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4)
-    // PTY: 강수형태 [6] 없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
+    // TMP: 1시간 기온 [0]
+    // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4) //"맑음", "구름많음", "흐림", "흐리고 비"
+    // PTY: 강수형태 [6] //없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
+    // POP: 강수확률 [7]
 
     // let weather = "";
 
@@ -165,21 +169,21 @@ function WeaContent({ weatherRes }) {
     //     return weather == "Rain";
     // }
 
-    // console.log(weather);
+    // console.log(sky);
 
     return (
         <WeaContentBlock>
             <div className="temp">
-                <h1 className="tempNum">{tempNum}</h1>
+                <h1 className="tempNum">{tempNum[0]}</h1>
                 <h1>˚</h1>
             </div>
 
             <div>
-                {sky == 1 ? (
+                {sky[0] == 1 ? (
                     <Sun className="sun" />
-                ) : pty > 0 ? (
+                ) : pty[0] > 0 ? (
                     <Rain className="rain" />
-                ) : sky == 3 || sky == 4 ? (
+                ) : sky[0] == 3 || sky[0] == 4 ? (
                     <Cloud className="cloud" />
                 ) : (
                     <Sun className="sun" />
@@ -187,16 +191,16 @@ function WeaContent({ weatherRes }) {
             </div>
 
             <h2 className="summary">
-                {sky == 1
+                {sky[0] == 1
                     ? "야구보기 딱 좋은 날씨에요!"
-                    : pty > 0
+                    : pty[0] > 0
                     ? "오늘... 야구할 수 있을까?"
-                    : sky == 3 || sky == 4
+                    : sky[0] == 3 || sky[0] == 4
                     ? "시원하게 야구 볼 수 있겠다!"
                     : "기본 멘트 입니다"}
             </h2>
             <div className="weeklyWeather">
-                <Calendar tempNum={tempNum} location={location} />
+                <Calendar tempNum={tempNum} sky={sky} pty={pty} location={location} />
             </div>
         </WeaContentBlock>
     );
