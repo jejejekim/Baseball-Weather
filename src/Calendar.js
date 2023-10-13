@@ -47,14 +47,14 @@ const Calendar = ({ tempNum, sky, pty, location }) => {
             sky[i] == "흐리고 비"
         ) {
             weeklyWeather.push("Rain");
-        } else if (sky[i] == "3" || sky[i] == "구름많음" || sky[i] == "흐림") {
+        } else if (sky[i] == "3" || sky[i] == "4" || sky[i] == "구름많음" || sky[i] == "흐림") {
             weeklyWeather.push("Clouds");
         } else {
             weeklyWeather.push("Null");
         }
     }
 
-    // console.log(weeklyWeather);
+    console.log(weeklyWeather);
 
     for (let i = 0; i < 7; i++) {
         weekList.push(

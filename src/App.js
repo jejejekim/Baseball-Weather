@@ -28,8 +28,6 @@ function App() {
     const [weatherRes, setWeatherRes] = useState({
         temp: 0,
         sky: "",
-        // sky1: 0,
-        // sky2: "",
         pty: 0,
         pop: 0,
         location: "롯데자이언츠상동야구장",
@@ -45,14 +43,21 @@ function App() {
     const basedate = `${year}${month}${today}`;
     const tmFc = `${year}${month}${today}0600`;
 
+    // 실행
+    // 위경도->좌표
+    var rs = ToXY("toXY", "35.3194486836776", "128.967908503402");
+
+    const nx = rs.x;
+    const ny = rs.y;
+
     useEffect(() => {
         axios
             .all([
                 axios.get(
-                    `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=800&pageNo=1&dataType=${type}&base_date=${basedate}&base_time=0500&nx=55&ny=127`
+                    `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=800&pageNo=1&dataType=${type}&base_date=${basedate}&base_time=0500&nx=${nx}&ny=${ny}`
                 ),
                 axios.get(
-                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=11D10000&tmFc=${tmFc}`
+                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=11H20201&tmFc=${tmFc}`
                 ),
             ])
             .then(
@@ -93,7 +98,7 @@ function App() {
                         ],
                     });
                     // console.log(res);
-                    // console.log(weatherRes);
+                    console.log(weatherRes);
                 })
             )
             .catch((err) => console.log(err));
@@ -115,11 +120,6 @@ function App() {
     // };
 
     // getUserLocation();
-
-    // 실행
-    // 위경도->좌표
-    var rs = ToXY("toXY", "35.3194486836776", "128.967908503402");
-    console.log(rs.x, rs.y);
 
     return (
         <>

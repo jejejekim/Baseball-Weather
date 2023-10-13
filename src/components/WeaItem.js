@@ -74,7 +74,9 @@ const WeaItemBlock = styled.div`
         gap: 1.2rem;
     }
 
-    .dailyIcon {
+    .none {
+        width: 4.8rem;
+        height: 2.5rem;
     }
 `;
 
