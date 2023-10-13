@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import styled from "styled-components";
+import ToXY from "./ToXY";
 import { createGlobalStyle } from "styled-components";
 import "./App.scss";
 import WeaContent from "./components/WeaContent";
@@ -35,18 +36,23 @@ function App() {
     });
     const [raining, setRaining] = useState(false);
 
-    const apiKey =
-        "ljsWVYgdEhgUE5uPjMFMpoKgNbrIGcgSuUMI7c4UmNr5E88U5%2Bu%2FWJAePHSow38OEGSaHweiYgWTmb7LsPW3RQ%3D%3D";
+    const date = new Date();
+    const year = date.getFullYear(); //년
+    const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1; //월(0부터 시작하기 때문에 +1)
+    const today = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate(); //일
+
     const type = "JSON";
+    const basedate = `${year}${month}${today}`;
+    const tmFc = `${year}${month}${today}0600`;
 
     useEffect(() => {
         axios
             .all([
                 axios.get(
-                    `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apiKey}&numOfRows=800&pageNo=1&dataType=${type}&base_date=20231012&base_time=0500&nx=55&ny=127`
+                    `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=800&pageNo=1&dataType=${type}&base_date=${basedate}&base_time=0500&nx=55&ny=127`
                 ),
                 axios.get(
-                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${apiKey}&numOfRows=1&pageNo=1&dataType=${type}&regId=11D10000&tmFc=202310121800`
+                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=11D10000&tmFc=${tmFc}`
                 ),
             ])
             .then(
@@ -87,7 +93,7 @@ function App() {
                         ],
                     });
                     // console.log(res);
-                    console.log(weatherRes);
+                    // console.log(weatherRes);
                 })
             )
             .catch((err) => console.log(err));
@@ -109,6 +115,11 @@ function App() {
     // };
 
     // getUserLocation();
+
+    // 실행
+    // 위경도->좌표
+    var rs = ToXY("toXY", "35.3194486836776", "128.967908503402");
+    console.log(rs.x, rs.y);
 
     return (
         <>
