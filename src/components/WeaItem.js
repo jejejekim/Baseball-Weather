@@ -76,7 +76,7 @@ const WeaItemBlock = styled.div`
 
     .none {
         width: 4.8rem;
-        height: 2.5rem;
+        height: 2rem;
     }
 `;
 

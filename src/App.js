@@ -42,6 +42,7 @@ function App() {
     const type = "JSON";
     const basedate = `${year}${month}${today}`;
     const tmFc = `${year}${month}${today}0600`;
+    const regId = "11H20201";
 
     // 실행
     // 위경도->좌표
@@ -57,16 +58,20 @@ function App() {
                     `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=800&pageNo=1&dataType=${type}&base_date=${basedate}&base_time=0500&nx=${nx}&ny=${ny}`
                 ),
                 axios.get(
-                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=11H20201&tmFc=${tmFc}`
+                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=${regId}&tmFc=${tmFc}`
+                ),
+                axios.get(
+                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=${regId}&tmFc=${tmFc}`
                 ),
             ])
             .then(
-                axios.spread((req1, req2) => {
+                axios.spread((req1, req2, req3) => {
                     const res1 = req1.data.response.body.items.item;
                     const res2 = req2.data.response.body.items.item;
+                    const res3 = req3.data.response.body.items.item;
 
-                    //rea[0]은 단기예보, res[1]은 중기예보
-                    const res = [[...res1], ...res2];
+                    //rea[0]은 단기예보, res[1]은 중기해상예보, res[2]는 중기기온예보
+                    const res = [[...res1], ...res2, ...res3];
 
                     // TMP: 1시간 기온 [0]
                     // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4) //"맑음", "구름많음", "흐리고 비"
@@ -74,7 +79,15 @@ function App() {
                     // POP: 강수확률 [7]
 
                     setWeatherRes({
-                        temp: [res[0][145].fcstValue, res[0][435].fcstValue, res[0][725].fcstValue],
+                        temp: [
+                            res[0][145].fcstValue,
+                            res[0][435].fcstValue,
+                            res[0][725].fcstValue,
+                            Math.round((res[2].taMax3 + res[2].taMin3) / 2),
+                            Math.round((res[2].taMax4 + res[2].taMin4) / 2),
+                            Math.round((res[2].taMax5 + res[2].taMin5) / 2),
+                            Math.round((res[2].taMax6 + res[2].taMin6) / 2),
+                        ],
                         sky: [
                             res[0][150].fcstValue,
                             res[0][440].fcstValue,
@@ -84,8 +97,6 @@ function App() {
                             res[1].wf5Pm,
                             res[1].wf6Pm,
                         ],
-                        // sky1: [res[0][150].fcstValue, res[0][440].fcstValue, res[0][730].fcstValue],
-                        // sky2: [res[1].wf3Pm, res[1].wf4Pm, res[1].wf5Pm, res[1].wf6Pm],
                         pty: [res[0][151].fcstValue, res[0][441].fcstValue, res[0][731].fcstValue],
                         pop: [
                             res[0][152].fcstValue,
@@ -96,9 +107,10 @@ function App() {
                             res[1].rnSt5Pm,
                             res[1].rnSt6Pm,
                         ],
+                        location: "롯데자이언츠상동야구장",
                     });
-                    // console.log(res);
-                    console.log(weatherRes);
+                    console.log(res);
+                    // console.log(weatherRes);
                 })
             )
             .catch((err) => console.log(err));

@@ -50,11 +50,11 @@ const Calendar = ({ tempNum, sky, pty, location }) => {
         } else if (sky[i] == "3" || sky[i] == "4" || sky[i] == "구름많음" || sky[i] == "흐림") {
             weeklyWeather.push("Clouds");
         } else {
-            weeklyWeather.push("Null");
+            weeklyWeather.push("Rain");
         }
     }
 
-    console.log(weeklyWeather);
+    // console.log(weeklyWeather);
 
     for (let i = 0; i < 7; i++) {
         weekList.push(
