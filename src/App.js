@@ -42,6 +42,7 @@ function App() {
     const type = "JSON";
     const basedate = `${year}${month}${today}`;
     const tmFc = `${year}${month}${today}0600`;
+    const regId = "11H20201";
 
     // 실행
     // 위경도->좌표
@@ -57,10 +58,10 @@ function App() {
                     `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=800&pageNo=1&dataType=${type}&base_date=${basedate}&base_time=0500&nx=${nx}&ny=${ny}`
                 ),
                 axios.get(
-                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=11B10101&tmFc=${tmFc}`
+                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=${regId}&tmFc=${tmFc}`
                 ),
                 axios.get(
-                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=11B10101&tmFc=${tmFc}`
+                    `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey=${process.env.REACT_APP_WEATHER_KEY}&numOfRows=1&pageNo=1&dataType=${type}&regId=${regId}&tmFc=${tmFc}`
                 ),
             ])
             .then(
@@ -106,6 +107,7 @@ function App() {
                             res[1].rnSt5Pm,
                             res[1].rnSt6Pm,
                         ],
+                        location: "롯데자이언츠상동야구장",
                     });
                     console.log(res);
                     // console.log(weatherRes);
