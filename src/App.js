@@ -20,7 +20,6 @@ const WeaBlock = styled.div`
     position: fixed;
     left: 0;
     top: 0;
-
     // background-color: rgba(0, 57, 159, 0.2);
 `;
 
@@ -109,7 +108,10 @@ function App() {
                         ],
                         location: "롯데자이언츠상동야구장",
                     });
-                    console.log(res);
+
+                    setRaining(res[0][151].fcstValue > 0 ? true : false);
+
+                    // console.log(res);
                     // console.log(weatherRes);
                 })
             )
@@ -135,7 +137,7 @@ function App() {
 
     return (
         <>
-            <WeaBlock backgroud-color={raining ? "rgba(0, 57, 159, 0.2)" : ""}>
+            <WeaBlock style={{ backgroundColor: raining ? "rgba(0, 57, 159, 0.2)" : "" }}>
                 <GlobalStyle />
                 <WeaContent weatherRes={weatherRes} />
             </WeaBlock>

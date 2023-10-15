@@ -1,13 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Sun } from "../assets/SVG/sun.svg";
 import { ReactComponent as Rain } from "../assets/SVG/rain.svg";
 import { ReactComponent as Cloud } from "../assets/SVG/cloud.svg";
-import { WeaItemSunny, WeaItemRainy, WeaItemCloudy } from "./WeaItem";
-import Rainy from "../pages/Rainy";
 import Calendar from "../Calendar";
-import WeaItem from "./WeaItem";
 
 const WeaContentBlock = styled.div`
     position: fixed;
@@ -147,7 +143,6 @@ const WeaContentBlock = styled.div`
 function WeaContent({ weatherRes }) {
     const tempNum = weatherRes.temp; //온도
     const sky = weatherRes.sky; //하늘 상황
-    // const sky2 = weatherRes.sky2;
     const pty = weatherRes.pty; //강수 상태
     const pop = weatherRes.pop; //강수 확률
     const location = weatherRes.location; //위치
@@ -156,20 +151,6 @@ function WeaContent({ weatherRes }) {
     // SKY: 하늘상태 [5] //맑음(1), 구름많음(3), 흐림(4) //"맑음", "구름많음", "흐림", "흐리고 비"
     // PTY: 강수형태 [6] //없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
     // POP: 강수확률 [7]
-
-    // let weather = "";
-
-    // if (pty == 0) {
-    //     if (sky == 1) {
-    //         return (weather = "Clear");
-    //     } else if (sky == 3 || sky == 4) {
-    //         return (weather = "Clouds");
-    //     }
-    // } else {
-    //     return weather == "Rain";
-    // }
-
-    // console.log(sky);
 
     return (
         <WeaContentBlock>
