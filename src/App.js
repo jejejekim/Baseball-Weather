@@ -111,7 +111,7 @@ function App() {
 
                     setRaining(res[0][151].fcstValue > 0 ? true : false);
 
-                    // console.log(res);
+                    console.log(res);
                     // console.log(weatherRes);
                 })
             )
